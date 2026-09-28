@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PharmaScope – AI 라이선스 인 타겟 발굴</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>💊 PharmaScope</h1>
+    <p class="subtitle">AI 라이선스 인 타겟 발굴 에이전트</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>🔍 탐색 조건</h2>
+      <div class="form-grid">
+        <label>
+          질환명
+          <input id="disease" type="text" placeholder="예: NASH" value="NASH" />
+        </label>
+        <label>
+          기술 모달리티
+          <input id="modality" type="text" placeholder="예: siRNA, ADC" value="" />
+        </label>
+        <label>
+          임상 단계
+          <select id="phase">
+            <option>Phase 1</option>
+            <option selected>Phase 2</option>
+            <option>Phase 3</option>
+            <option>모든 단계</option>
+          </select>
+        </label>
+      </div>
+      <button id="scanBtn" class="primary">타겟 스캔 시작</button>
+      <p id="status" class="status"></p>
+    </section>
+
+    <section id="candidatesSection" class="card hidden">
+      <h2>📋 후보 리스트</h2>
+      <div class="table-wrap">
+        <table id="candidatesTable">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="analysisSection" class="card hidden">
+      <h2>💰 유사 과거 딜 분석</h2>
+      <div id="analysisProgress" class="progress"></div>
+      <div class="table-wrap">
+        <table id="analysisTable">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="chartSection" class="card hidden">
+      <h2>📊 예상 계약금 비교</h2>
+      <div id="barChart" class="chart"></div>
+    </section>
+
+    <section id="reportSection" class="card hidden">
+      <h2>📑 BD 인사이트 리포트</h2>
+      <div id="reportContent" class="report"></div>
+      <button id="downloadBtn" class="secondary">📥 보고서 다운로드 (Markdown)</button>
+    </section>
+  </main>
+
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    // ★★★ 배포 후 Render 백엔드 URL로 반드시 교체! ★★★
+    window.PHARMASCOPE_API = "https://pharmascope-api.onrender.com";
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
